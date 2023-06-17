@@ -3,7 +3,7 @@ import { ShowModalContext } from '../Context';
 
 
 function Popup() {
-  const {showPopup, setShowpup} = useContext(ShowModalContext);
+  const {setShowpup} = useContext(ShowModalContext);
   const [prenom, setPrenom] = useState("")
   const [email, setEmail] = useState("")
   const [opacity, setOpacity] = useState(0)
@@ -20,7 +20,7 @@ function Popup() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("Prenom : " + prenom, "Email : " + email)
+    console.log("Prenom : " + prenom, "\nEmail : " + email)
   }
   return (
     <div className='overlay' >
