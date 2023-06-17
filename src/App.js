@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React,{ useMemo, useState } from 'react';
 import './App.css';
+import { ShowModalContext } from './Context';
+import Button from './components/Button';
+import Popup from './components/Popup';
 
 function App() {
+  const [showPopup, setShowpup] = useState(false);
+  const value = useMemo(()=>({showPopup, setShowpup}),[showPopup])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ShowModalContext.Provider value={value}>
+        <Button img="star"></Button>
+        <Button></Button>
+        <Button></Button>
+        <Button img="cash"></Button>
+        {
+          (showPopup?<Popup></Popup>:null)
+        }
+      </ShowModalContext.Provider>
     </div>
   );
 }
